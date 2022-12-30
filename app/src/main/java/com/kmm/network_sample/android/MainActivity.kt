@@ -3,38 +3,27 @@ package com.kmm.network_sample.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.kmm.network_sample.Greeting
+import androidx.core.view.WindowCompat
+import com.arkivanov.decompose.defaultComponentContext
+import com.kmm.network_sample.android.theme.AppTheme
+import com.kmm.network_sample.android.ui.RootUi
+import com.kmm.network_sample.di.ComponentFactory
+import com.kmm.network_sample.root.createRootComponent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val componentFactory = application.koin.get<ComponentFactory>()
+        val rootComponent = componentFactory.createRootComponent(defaultComponentContext())
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    GreetingView(Greeting().greet())
-                }
+            AppTheme {
+                RootUi(component = rootComponent)
             }
         }
     }
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
