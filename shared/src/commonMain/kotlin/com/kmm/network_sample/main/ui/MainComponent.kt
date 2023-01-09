@@ -1,3 +1,12 @@
 package com.kmm.network_sample.main.ui
 
-interface MainComponent
+import com.kmm.network_sample.pokemons.data.LoadingType
+
+interface MainComponent {
+
+    fun onKtorClick()
+
+    sealed interface Output {
+        data class RequestPokemonList(val loadingType: LoadingType) : Output
+    }
+}

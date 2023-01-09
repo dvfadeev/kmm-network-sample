@@ -4,4 +4,10 @@
     <!-- Common -->
     <string name="app_name">Kmm Network Sample</string>
 
+    <!-- Main -->
+    <string name="menu_ktor">Show Pokemons (Ktor)</string>
+
+    <!-- Pokemons -->
+    <string name="pokemons_header">Pokemons</string>
+
 </resources>

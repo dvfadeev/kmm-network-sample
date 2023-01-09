@@ -10,7 +10,8 @@ fun AppTheme(
 ) {
     CompositionLocalProvider(
         LocalCustomTypography provides AppTypography,
-        LocalCustomColors provides LightAppColors
+        LocalCustomColors provides LightAppColors,
+        LocalDefaultButtonColors provides ButtonColors
     ) {
         MaterialTheme(
             colors = LightAppColors.toMaterialColors(),

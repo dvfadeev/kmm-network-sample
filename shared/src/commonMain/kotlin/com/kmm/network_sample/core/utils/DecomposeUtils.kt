@@ -6,7 +6,6 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
-import com.kmm.network_sample.core.ui.Optional
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 

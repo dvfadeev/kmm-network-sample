@@ -38,7 +38,8 @@ data class CustomColors(
         val primary: Color = RawColors.blackA,
         val caption: Color = RawColors.grayE,
         val brand: Color = RawColors.grayA,
-        val invert: Color = RawColors.whiteA
+        val invert: Color = RawColors.whiteA,
+        val disabled: Color = RawColors.grayC
     )
 
     data class IconColors(
@@ -56,16 +57,23 @@ data class CustomColors(
     )
 
     data class ButtonColors(
-        val primary: Color = RawColors.blackA,
+        val primary: Color = RawColors.whiteA,
         val brand: StateColors = StateColors(
+            default = RawColors.grayA,
+            pressed = RawColors.grayB,
+            disabled = RawColors.grayC
+        ),
+        val invert: StateColors = StateColors(
             default = RawColors.blackA,
-            pressed = RawColors.grayB
+            pressed = RawColors.grayE,
+            disabled = RawColors.grayC
         )
     )
 
     data class StateColors(
         val default: Color,
-        val pressed: Color?
+        val pressed: Color,
+        val disabled: Color
     )
 }
 

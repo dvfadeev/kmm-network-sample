@@ -1,9 +1,11 @@
 package com.kmm.network_sample.android
 
 import android.app.Application
+import com.kmm.network_sample.core.error_handling.ErrorMessageFactory
 import com.kmm.network_sample.di.ComponentFactory
 import com.kmm.network_sample.initAndroidShared
 import org.koin.core.Koin
+import org.koin.dsl.module
 
 class App : Application(), KoinProvider {
 
@@ -16,7 +18,9 @@ class App : Application(), KoinProvider {
         initAndroidShared(
             appDeclaration = {
                 modules(
-                    // TODO
+                    module {
+                        single <ErrorMessageFactory> { ErrorMessageFactory(applicationContext) }
+                    }
                 )
             },
             onKoinReady = { koin ->

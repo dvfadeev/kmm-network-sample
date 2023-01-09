@@ -23,7 +23,7 @@ kotlin {
         val kotlinxDateTimeVersion = "0.4.0"
         val decomposeVersion = "1.0.0-alpha-06"
         val koinVersion = "3.2.1"
-        val ktorVersion = "2.1.2"
+        val ktorVersion = "2.2.2"
 
         val commonMain by getting {
             dependencies {
@@ -39,6 +39,7 @@ kotlin {
 
                 // Network
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-resources:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             }
@@ -51,8 +52,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
                 implementation("androidx.core:core:1.9.0")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
         val androidTest by getting
@@ -66,7 +67,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
         val iosX64Test by getting
