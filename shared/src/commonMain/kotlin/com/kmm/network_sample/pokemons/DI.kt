@@ -32,5 +32,5 @@ fun ComponentFactory.createPokemonDetailsComponent(
     pokemon: Pokemon,
     loadingType: LoadingType
 ): PokemonDetailsComponent {
-    return RealPokemonDetailsComponent(componentContext, pokemon, loadingType, get())
+    return RealPokemonDetailsComponent(componentContext, pokemon, loadingType, get(), get())
 }

@@ -5,5 +5,7 @@ import com.kmm.network_sample.pokemons.domain.DetailedPokemon
 
 interface PokemonDetailsComponent {
 
+    val isRefreshing: Value<Boolean>
+
     val pokemonState: Value<List<DetailedPokemon>>
 }

@@ -5,9 +5,11 @@
     <string name="app_name">Kmm Network Sample</string>
 
     <!-- Main -->
-    <string name="menu_ktor">Show Pokemons (Ktor)</string>
+    <string name="menu_ktor">Load Pokemons (Ktor)</string>
 
     <!-- Pokemons -->
     <string name="pokemons_header">Pokemons</string>
+    <string name="pokemon_height">Height: %d</string>
+    <string name="pokemon_weight">Weight: %d</string>
 
 </resources>

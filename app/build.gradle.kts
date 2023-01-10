@@ -38,6 +38,7 @@ dependencies {
     val composeVersion = "1.2.1"
     val activityComposeVersion = "1.6.0"
     val accompanistVersion = "0.27.0"
+    val coilVersion = "2.2.2"
 
     implementation(project(":shared"))
 
@@ -62,4 +63,5 @@ dependencies {
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
     implementation("com.google.accompanist:accompanist-swiperefresh:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
+    implementation("io.coil-kt:coil-compose:$coilVersion")
 }

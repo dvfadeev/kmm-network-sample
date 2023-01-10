@@ -8,14 +8,14 @@ import com.kmm.network_sample.core.message.ui.MessageComponent
 import com.kmm.network_sample.core.message.ui.RealMessageComponent
 import com.kmm.network_sample.core.network.NetworkApiFactory
 import com.kmm.network_sample.di.ComponentFactory
-import com.kmm.network_sample.pokemons.data.PokemonsApi
+import com.kmm.network_sample.pokemons.data.PokemonKtorApi
 import io.ktor.client.*
 import org.koin.core.component.get
 import org.koin.dsl.module
 
 val coreModule = module {
     single<HttpClient> { NetworkApiFactory().createApi() }
-    single<PokemonsApi> { PokemonsApi(get()) }
+    single<PokemonKtorApi> { PokemonKtorApi(get()) }
     single<ErrorHandler> { ErrorHandler(get(), get()) }
     single<MessageService> { MessageServiceImpl() }
 }
