@@ -42,6 +42,11 @@ kotlin {
                 implementation("io.ktor:ktor-client-resources:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-auth:$ktorVersion")
+
+                // Logging
+                implementation ("org.slf4j:slf4j-simple:1.6.1")
             }
         }
         val commonTest by getting {
