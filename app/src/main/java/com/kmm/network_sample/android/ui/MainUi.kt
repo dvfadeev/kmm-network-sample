@@ -29,7 +29,8 @@ fun MainUi(
         topBar = { Toolbar(title = stringResource(R.string.app_name)) },
         content = {
             MainContent(
-                onKtorClick = component::onKtorClick
+                onKtorClick = component::onKtorClick,
+                onKtorfitClick = component::onKtorfitClick
             )
         },
         modifier = modifier
@@ -39,6 +40,7 @@ fun MainUi(
 @Composable
 private fun MainContent(
     onKtorClick: () -> Unit,
+    onKtorfitClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -47,6 +49,7 @@ private fun MainContent(
             .padding(start = 16.dp, end = 16.dp, top = 20.dp)
     ) {
         MenuButton(text = stringResource(id = R.string.menu_ktor), onClick = onKtorClick)
+        MenuButton(text = stringResource(id = R.string.menu_ktorfit), onClick = onKtorfitClick)
     }
 }
 
@@ -80,4 +83,6 @@ fun MainUiPreview() {
 class FakeMainComponent : MainComponent {
 
     override fun onKtorClick() = Unit
+
+    override fun onKtorfitClick() = Unit
 }

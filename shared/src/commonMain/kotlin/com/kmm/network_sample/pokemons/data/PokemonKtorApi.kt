@@ -7,7 +7,11 @@ import io.ktor.http.*
 
 class PokemonKtorApi(private val client: HttpClient) {
 
-    suspend fun getPokemonList(): PokemonListResponse = client.get("api/v2/pokemon").body()
+    suspend fun getPokemonList(limit: Int = 100): PokemonListResponse = client.get("api/v2/pokemon") {
+        url {
+            parameters.append("limit", limit.toString())
+        }
+    }.body()
 
     suspend fun getPokemonById(id: String): DetailedPokemonResponse = client.get("api/v2/pokemon") {
         url {

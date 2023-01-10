@@ -6,6 +6,8 @@ interface MainComponent {
 
     fun onKtorClick()
 
+    fun onKtorfitClick()
+
     sealed interface Output {
         data class RequestPokemonList(val loadingType: LoadingType) : Output
     }

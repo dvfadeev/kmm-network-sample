@@ -9,7 +9,9 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
-class NetworkApiFactory {
+private const val BASE_URL = "https://pokeapi.co/"
+
+class NetworkKtorApiFactory {
 
     fun createUnauthorizedApi() = HttpClient {
         install(Logging) {
@@ -22,7 +24,7 @@ class NetworkApiFactory {
             })
         }
         defaultRequest {
-            url("https://pokeapi.co/")
+            url(BASE_URL)
         }
         HttpResponseValidator {
             handleResponseExceptionWithRequest { exception, _ ->
@@ -41,20 +43,20 @@ class NetworkApiFactory {
         }
         install(Auth) {
             basic {
-//                // Configure basic authentication
-//                credentials {
-//                    BasicAuthCredentials(username = "jetbrains", password = "foobar")
-//                    // or
-//                    DigestAuthCredentials(username = "jetbrains", password = "foobar")
-//                }
-//                realm = "Access to the '/' path"
+                // Configure basic authentication
+                credentials {
+                    BasicAuthCredentials(username = "jetbrains", password = "foobar")
+                    // or use digest auth
+                    // DigestAuthCredentials(username = "jetbrains", password = "foobar")
+                }
+                realm = "Access to the '/' path"
             }
             bearer {
-//                // Or Use bearer
-//                loadTokens {
-//                    // Load tokens from a local storage and return them as the 'BearerTokens' instance
-//                    BearerTokens("abc123", "xyz111")
-//                }
+                // Configure bearer authentication
+                loadTokens {
+                    // Load tokens from a local storage and return them as the 'BearerTokens' instance
+                    BearerTokens("abc123", "xyz111")
+                }
             }
         }
         //TODO: Setup HTTP Client

@@ -6,6 +6,7 @@
 
     <!-- Main -->
     <string name="menu_ktor">Load Pokemons (Ktor)</string>
+    <string name="menu_ktorfit">Load Pokemons (Ktorfit)</string>
 
     <!-- Pokemons -->
     <string name="pokemons_header">Pokemons</string>

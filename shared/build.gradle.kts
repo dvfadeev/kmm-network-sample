@@ -1,9 +1,13 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.serialization").version("1.7.20")
+    kotlin("plugin.serialization").version("1.7.10")
     id("com.android.library")
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
     id("kotlin-parcelize")
 }
+
+val ktorVersion = "2.2.2"
+val ktorfitVersion = "1.0.0-beta16"
 
 kotlin {
     android()
@@ -23,7 +27,6 @@ kotlin {
         val kotlinxDateTimeVersion = "0.4.0"
         val decomposeVersion = "1.0.0-alpha-06"
         val koinVersion = "3.2.1"
-        val ktorVersion = "2.2.2"
 
         val commonMain by getting {
             dependencies {
@@ -44,6 +47,8 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-client-auth:$ktorVersion")
+
+                implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
 
                 // Logging
                 implementation ("org.slf4j:slf4j-simple:1.6.1")
@@ -94,4 +99,11 @@ android {
         minSdk = 26
         targetSdk = 33
     }
+}
+
+dependencies {
+    add("kspCommonMainMetadata", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspAndroid", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspIosX64", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspIosSimulatorArm64", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
 }

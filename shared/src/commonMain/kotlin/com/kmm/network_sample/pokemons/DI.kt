@@ -24,7 +24,7 @@ fun ComponentFactory.createPokemonListComponent(
     loadingType: LoadingType,
     onOutput: (PokemonListComponent.Output) -> Unit
 ): PokemonListComponent {
-    return RealPokemonListComponent(componentContext, loadingType, onOutput, get(), get())
+    return RealPokemonListComponent(componentContext, loadingType, onOutput, get(), get(), get())
 }
 
 fun ComponentFactory.createPokemonDetailsComponent(
@@ -32,5 +32,5 @@ fun ComponentFactory.createPokemonDetailsComponent(
     pokemon: Pokemon,
     loadingType: LoadingType
 ): PokemonDetailsComponent {
-    return RealPokemonDetailsComponent(componentContext, pokemon, loadingType, get(), get())
+    return RealPokemonDetailsComponent(componentContext, pokemon, loadingType, get(), get(), get())
 }

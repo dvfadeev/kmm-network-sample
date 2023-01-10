@@ -7,9 +7,9 @@ import com.kmm.network_sample.core.error_handling.safeLaunch
 import com.kmm.network_sample.core.utils.componentCoroutineScope
 import com.kmm.network_sample.pokemons.data.LoadingType
 import com.kmm.network_sample.pokemons.data.PokemonKtorApi
+import com.kmm.network_sample.pokemons.data.PokemonKtorfitApi
 import com.kmm.network_sample.pokemons.data.toDomain
 import com.kmm.network_sample.pokemons.domain.Pokemon
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RealPokemonListComponent(
@@ -17,6 +17,7 @@ class RealPokemonListComponent(
     private val loadingType: LoadingType,
     private val onOutput: (PokemonListComponent.Output) -> Unit,
     private val pokemonKtorApi: PokemonKtorApi,
+    private val pokemonKtorfitApi: PokemonKtorfitApi,
     private val errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, PokemonListComponent {
 
@@ -38,6 +39,10 @@ class RealPokemonListComponent(
                     // Use Ktor API
                     LoadingType.KTOR -> {
                         pokemonKtorApi.getPokemonList().results.map { it.toDomain() }
+                    }
+                    // Use Ktorfit API
+                    LoadingType.KTORFIT -> {
+                        pokemonKtorfitApi.getPokemonList().results.map { it.toDomain() }
                     }
                 }
                 isRefreshingState.value = false

@@ -7,6 +7,7 @@ import com.kmm.network_sample.core.error_handling.safeLaunch
 import com.kmm.network_sample.core.utils.componentCoroutineScope
 import com.kmm.network_sample.pokemons.data.LoadingType
 import com.kmm.network_sample.pokemons.data.PokemonKtorApi
+import com.kmm.network_sample.pokemons.data.PokemonKtorfitApi
 import com.kmm.network_sample.pokemons.data.toDomain
 import com.kmm.network_sample.pokemons.domain.DetailedPokemon
 import com.kmm.network_sample.pokemons.domain.Pokemon
@@ -17,6 +18,7 @@ class RealPokemonDetailsComponent(
     pokemon: Pokemon,
     loadingType: LoadingType,
     pokemonKtorApi: PokemonKtorApi,
+    pokemonKtorfitApi: PokemonKtorfitApi,
     errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, PokemonDetailsComponent {
 
@@ -34,6 +36,10 @@ class RealPokemonDetailsComponent(
                         // Use Ktor API
                         LoadingType.KTOR -> {
                             pokemonKtorApi.getPokemonById(pokemon.id).toDomain()
+                        }
+                        // Use Ktorfit API
+                        LoadingType.KTORFIT -> {
+                            pokemonKtorfitApi.getPokemonById(pokemon.id).toDomain()
                         }
                     }
                 )

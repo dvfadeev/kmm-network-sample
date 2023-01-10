@@ -11,4 +11,8 @@ class RealMainComponent(
     override fun onKtorClick() {
         onOutput(MainComponent.Output.RequestPokemonList(LoadingType.KTOR))
     }
+
+    override fun onKtorfitClick() {
+        onOutput(MainComponent.Output.RequestPokemonList(LoadingType.KTORFIT))
+    }
 }
