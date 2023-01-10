@@ -19,7 +19,7 @@ class App : Application(), KoinProvider {
             appDeclaration = {
                 modules(
                     module {
-                        single <ErrorMessageFactory> { ErrorMessageFactory(applicationContext) }
+                        single { ErrorMessageFactory(applicationContext) }
                     }
                 )
             },

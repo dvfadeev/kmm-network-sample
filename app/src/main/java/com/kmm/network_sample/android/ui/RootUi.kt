@@ -39,7 +39,6 @@ fun RootUi(
 
             MessageUi(
                 component = component.messageComponent,
-                modifier = modifier,
                 bottomPadding = 16.dp
             )
         }

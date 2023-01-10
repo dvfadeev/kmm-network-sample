@@ -1,13 +1,14 @@
 package com.kmm.network_sample.core.utils
 
 import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 
 /**
  * Создает фейковый [ChildStack] с одним активным компонентом. Используется для превью Compose.
@@ -45,15 +46,4 @@ fun LifecycleOwner.componentCoroutineScope(): CoroutineScope {
     }
 
     return scope
-}
-
-fun <T : Any> Flow<T?>.asValue(scope: CoroutineScope): Value<Optional<T>> {
-    val mutableValue = MutableValue(Optional<T>(null))
-    scope.launch(Dispatchers.Main) {
-        this@asValue
-            .collect {
-                mutableValue.value = Optional(it)
-            }
-    }
-    return mutableValue
 }

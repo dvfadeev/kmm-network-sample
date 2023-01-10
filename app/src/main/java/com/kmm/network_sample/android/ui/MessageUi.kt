@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -25,17 +24,13 @@ import com.kmm.network_sample.core.message.ui.MessageComponent
  */
 @Composable
 fun MessageUi(
-    component: MessageComponent, modifier: Modifier = Modifier, bottomPadding: Dp
+    component: MessageComponent, bottomPadding: Dp
 ) {
-    val additionalBottomPadding = with(LocalDensity.current) {
-        16.dp
-        // LocalMessageOffsets.current.values.maxOrNull()?.toDp() ?: 0.dp
-    }
     val message by component.visibleMessage.subscribeAsState()
     AppTheme {
         MessagePopup(
             message = message,
-            bottomPadding = bottomPadding + additionalBottomPadding,
+            bottomPadding = bottomPadding + 16.dp,
             onAction = component::onActionClick
         )
     }
@@ -105,7 +100,7 @@ private fun MessageButton(
 @Composable
 fun MessageUiPreview() {
     AppTheme {
-        MessageUi(FakeMessageComponent(), Modifier, 40.dp)
+        MessageUi(FakeMessageComponent(), 40.dp)
     }
 }
 

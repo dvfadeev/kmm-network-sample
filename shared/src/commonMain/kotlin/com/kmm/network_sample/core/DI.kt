@@ -16,9 +16,9 @@ import org.koin.core.component.get
 import org.koin.dsl.module
 
 val coreModule = module {
-    single<PokemonKtorApi> { PokemonKtorApi(NetworkKtorApiFactory().createUnauthorizedApi()) }
-    single<PokemonKtorfitApi> { NetworkKtorfitApiFactory().createUnauthorizedApi().create<PokemonKtorfitApi>() }
-    single<ErrorHandler> { ErrorHandler(get(), get()) }
+    single { PokemonKtorApi(NetworkKtorApiFactory().createUnauthorizedApi()) }
+    single { NetworkKtorfitApiFactory().createUnauthorizedApi().create<PokemonKtorfitApi>() }
+    single { ErrorHandler(get(), get()) }
     single<MessageService> { MessageServiceImpl() }
 }
 
