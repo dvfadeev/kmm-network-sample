@@ -7,6 +7,7 @@ import io.ktor.client.plugins.auth.providers.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
 private const val BASE_URL = "https://pokeapi.co/"
@@ -19,9 +20,7 @@ class NetworkKtorApiFactory {
             level = LogLevel.ALL
         }
         install(ContentNegotiation) {
-            json(Json {
-                ignoreUnknownKeys = true
-            })
+            json(createJson())
         }
         defaultRequest {
             url(BASE_URL)
@@ -60,5 +59,15 @@ class NetworkKtorApiFactory {
             }
         }
         //TODO: Setup HTTP Client
+    }
+
+    @OptIn(ExperimentalSerializationApi::class)
+    private fun createJson(): Json {
+        return Json {
+            explicitNulls = false
+            encodeDefaults = true
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
     }
 }
